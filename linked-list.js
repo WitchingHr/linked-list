@@ -1,15 +1,15 @@
 class LinkedList {
-  #HEAD = null;
+  #head = null;
   #length = 0;
 
   append(value){
     if (!value) return;
-    if (this.#HEAD === null) {
-      this.#HEAD = Node(value);
+    if (this.#head === null) {
+      this.#head = Node(value);
       this.#length++;
       return;
     }
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     while (pointer.next != null) {
       pointer = pointer.next;
     }
@@ -18,7 +18,7 @@ class LinkedList {
   }
   
   at(index) {
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     for (let i = 0; i <= index; i++) {
       if (i === index) {
         return pointer;
@@ -32,9 +32,9 @@ class LinkedList {
   }
 
   contains(value) {
-    if (this.#HEAD === null) return false;
+    if (this.#head === null) return false;
     const values = [];
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     if (pointer.next === null) {
       values.push(pointer.value);
     }
@@ -49,7 +49,7 @@ class LinkedList {
   }
 
   find(value) {
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     let size = this.#length;
     for (let i = 0; i <= size - 1; i++) {
       if (pointer.value === value) return i;
@@ -59,13 +59,13 @@ class LinkedList {
   }
 
   head() {
-    return this.#HEAD;
+    return this.#head;
   }
 
   insertAt(value, index) {
     if (!value) return;
     if (index === 0) {
-      this.#HEAD = Node(value, this.#HEAD);
+      this.#head = Node(value, this.#head);
       this.#length++;
       return;
     }
@@ -75,9 +75,9 @@ class LinkedList {
       this.#length++;
       return;
     }
-    let pointer = this.#HEAD.next;
-    let previous = this.#HEAD;
-    let next = this.#HEAD.next.next;
+    let pointer = this.#head.next;
+    let previous = this.#head;
+    let next = this.#head.next.next;
     for (let i = 1; ; i++) {
       if (i === index) {
         pointer = Node(value, pointer);
@@ -95,11 +95,11 @@ class LinkedList {
   }
 
   pop() {
-    if (this.#HEAD === null) return;
-    let pointer = this.#HEAD;
+    if (this.#head === null) return;
+    let pointer = this.#head;
     const length = this.#length;
     if (length === 1) {
-      this.#HEAD = null;
+      this.#head = null;
       this.#length = 0;
       return;
     }
@@ -114,19 +114,19 @@ class LinkedList {
 
   prepend(value) {
     if (!value) return;
-    this.#HEAD = Node(value, this.#HEAD);
+    this.#head = Node(value, this.#head);
     this.#length++;
   }
 
   removeAt(index) {
     if (index >= this.#length) return "Index doesn't exist";
     if (index === 0) {
-      this.#HEAD = this.#HEAD.next;
+      this.#head = this.#head.next;
       this.#length--;
       return;
     }
-    let pointer = this.#HEAD.next;
-    let previous = this.#HEAD;
+    let pointer = this.#head.next;
+    let previous = this.#head;
     for (let i = 1; i <= this.#length - 1; i++) {
       if (i === index) {
         previous.next = pointer.next;
@@ -143,7 +143,7 @@ class LinkedList {
   }
 
   tail() {
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     while (pointer.next !== null) {
       pointer = pointer.next;
     }
@@ -151,9 +151,9 @@ class LinkedList {
   }
 
   toString() {
-    if (this.#HEAD === null) return '( null )';
+    if (this.#head === null) return '( null )';
     const values = [];
-    let pointer = this.#HEAD;
+    let pointer = this.#head;
     if (pointer.next === null) {
       values.push(pointer.value);
     }
