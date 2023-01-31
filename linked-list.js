@@ -94,7 +94,6 @@ class LinkedList {
   }
 
   pop() {
-    // debugger;
     if (this.#head === null) return;
     const length = this.#length;
     if (length === 1) {
