@@ -1,8 +1,9 @@
 class LinkedList {
   #head = null;
+
   #length = 0;
 
-  append(value){
+  append(value) {
     if (!value) return;
     if (this.#head === null) {
       this.#head = Node(value);
@@ -16,7 +17,7 @@ class LinkedList {
     pointer.next = Node(value);
     this.#length++;
   }
-  
+
   at(index) {
     let pointer = this.#head;
     for (let i = 0; i <= index; i++) {
@@ -55,7 +56,7 @@ class LinkedList {
       if (pointer.value === value) return i;
       pointer = pointer.next;
     }
-    return "Not found";
+    return 'Not found';
   }
 
   head() {
@@ -77,7 +78,6 @@ class LinkedList {
     }
     let pointer = this.#head.next;
     let previous = this.#head;
-    let next = this.#head.next.next;
     for (let i = 1; ; i++) {
       if (i === index) {
         pointer = Node(value, pointer);
@@ -86,29 +86,30 @@ class LinkedList {
         break;
       }
       if (pointer.next === null) {
-        return "Index doesn't exist"
+        return "Index doesn't exist";
       }
       previous = pointer;
       pointer = pointer.next;
-      next = pointer.next;
     }
   }
 
   pop() {
+    // debugger;
     if (this.#head === null) return;
-    let pointer = this.#head;
     const length = this.#length;
     if (length === 1) {
       this.#head = null;
       this.#length = 0;
       return;
     }
-    for (let i = 0; ; i++) {
-      if (i = length - 1) {
+    let pointer = this.#head;
+    for (let i = 1; i <= length; i++) {
+      if (i === length - 1) {
         pointer.next = null;
         this.#length--;
         break;
       }
+      pointer = pointer.next;
     }
   }
 
@@ -168,7 +169,7 @@ class LinkedList {
     values.forEach(value => {
       string += `( ${value} ) -> `
     });
-    return string + '( null )';
+    return `${string} ( null )`;
   }
 }
 
@@ -176,7 +177,7 @@ function Node(value, next = null) {
   return {
     value,
     next,
-  }
+  };
 }
 
 // const list = new LinkedList;
